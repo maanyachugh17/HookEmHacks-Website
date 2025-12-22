@@ -83,19 +83,6 @@ function SocialIcon({ name }) {
   );
 }
 
-function MlhBadge() {
-  return (
-    <div className="w-[120px] rounded-2xl border border-white/10 bg-white/10 p-3 text-center backdrop-blur">
-      <div className="text-xs font-semibold tracking-wide text-white/80">MLH</div>
-      <div className="mt-1 text-[11px] text-white/70">OFFICIAL</div>
-      <div className="mt-2 rounded-xl bg-white/10 px-2 py-2 text-xs font-semibold text-white">
-        2026
-        <div className="text-[10px] font-medium text-white/70">SEASON</div>
-      </div>
-    </div>
-  );
-}
-
 function SectionHeading({ icon: Icon, kicker, title, desc }) {
   return (
     <div className="mx-auto mb-10 max-w-3xl text-center">
@@ -339,11 +326,6 @@ export default function App() {
 {/* Hero */}
 <main id="top" className="relative min-h-screen">
   <section className="mx-auto flex min-h-[calc(100vh-72px)] max-w-6xl flex-col justify-start px-4 pt-0 pb-6 md:pt-1 md:pb-8">
-    {/* MLH badge - top right, no overlap */}
-    <div className="mb-2 flex justify-center md:justify-end">
-      <MlhBadge />
-    </div>
-
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
