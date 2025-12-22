@@ -40,7 +40,7 @@ const SITE = {
   subtag:
     "Follow our socials for updates and tell us what you’re interested in for the next UT Austin hackathon.",
   dateLine: "April 18–19, 2026 • UT Austin Campus",
-  email: "team@hookemhacks.com",
+  email: "hookemhacks@gmail.com",
   location: "The University of Texas at Austin",
   socials: [
     { name: "Instagram", href: "#" },
@@ -118,7 +118,7 @@ function SectionHeading({ icon: Icon, kicker, title, desc }) {
 function InterestForm({ defaultRole = "participant" }) {
   // ✅ 1) Put your Formspree endpoint here
   // Example: "https://formspree.io/f/abcdwxyz"
-  const FORMSPREE_URL = "https://formspree.io/f/mykgwbzy";
+  const FORMSPREE_URL = "https://formspree.io/f/meejlrqa";
 
   const [role, setRole] = useState(defaultRole);
   const [name, setName] = useState("");
