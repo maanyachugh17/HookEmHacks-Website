@@ -266,7 +266,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#070A17] text-white">
+    <div className="min-h-screen bg-ut-navy text-white">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div
