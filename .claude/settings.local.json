@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__shadcn__get_project_registries",
+      "Bash(npx shadcn@latest add tabs sheet --yes)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "shadcn"
+  ]
+}
