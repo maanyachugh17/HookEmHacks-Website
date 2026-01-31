@@ -1,6 +1,5 @@
 import { Users, HeartHandshake, Gavel, ClipboardList, HelpCircle } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
 import { InterestForm } from "./InterestForm";
 
 const ROLES = [
@@ -74,77 +73,73 @@ const ROLES = [
 
 export function RegistrationHub({ defaultRole = "participant" }) {
   return (
-    <Card className="rounded-3xl">
-      <CardContent className="p-4 md:p-8">
-        <Tabs defaultValue={defaultRole} className="w-full">
-          <TabsList className="mb-6 grid w-full grid-cols-2 md:grid-cols-4">
-            {ROLES.map((role) => (
-              <TabsTrigger
-                key={role.id}
-                value={role.id}
-                className="gap-2"
-              >
-                <role.icon className="size-4" />
-                <span className="hidden sm:inline">{role.label}</span>
-                <span className="sm:hidden">{role.label.slice(0, 4)}</span>
-              </TabsTrigger>
-            ))}
-          </TabsList>
+    <Tabs defaultValue={defaultRole} className="w-full">
+      <TabsList className="mb-6 grid w-full grid-cols-2 md:grid-cols-4 bg-secondary/50 p-1 rounded-2xl">
+        {ROLES.map((role) => (
+          <TabsTrigger
+            key={role.id}
+            value={role.id}
+            className="gap-2 rounded-xl data-[state=active]:bg-background data-[state=active]:shadow-sm"
+          >
+            <role.icon className="size-4" />
+            <span className="hidden sm:inline">{role.label}</span>
+            <span className="sm:hidden">{role.label.slice(0, 4)}</span>
+          </TabsTrigger>
+        ))}
+      </TabsList>
 
-          {ROLES.map((role) => (
-            <TabsContent key={role.id} value={role.id} className="mt-0">
-              <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
-                {/* Role Info Panel */}
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <role.icon className="size-5 text-primary" />
-                      <h3 className="text-xl font-semibold">{role.label}</h3>
-                    </div>
-                    <p className="mt-1 text-muted-foreground">{role.description}</p>
-                  </div>
-
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {role.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-primary">•</span>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {role.note && (
-                    <div className="rounded-2xl border bg-secondary/50 p-4">
-                      <div className="flex items-center gap-2 font-medium">
-                        {role.note.icon && <role.note.icon className="size-4" />}
-                        {role.note.title}
-                      </div>
-                      <p className="mt-2 text-sm text-muted-foreground">{role.note.text}</p>
-                    </div>
-                  )}
-
-                  {role.extras && (
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      {role.extras.map((extra, i) => (
-                        <div key={i} className="rounded-2xl border bg-secondary/50 p-4">
-                          <div className="font-medium">{extra.title}</div>
-                          <div className="mt-2 text-sm text-muted-foreground">{extra.text}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+      {ROLES.map((role) => (
+        <TabsContent key={role.id} value={role.id} className="mt-0">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+            {/* Role Info Panel */}
+            <div className="space-y-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <role.icon className="size-5 text-primary" />
+                  <h3 className="text-xl font-semibold font-heading">{role.label}</h3>
                 </div>
-
-                {/* Form Panel */}
-                <div className="rounded-2xl border bg-card p-4 md:p-6">
-                  <h4 className="mb-4 text-lg font-semibold">Register your interest</h4>
-                  <InterestForm role={role.id} />
-                </div>
+                <p className="mt-1 text-muted-foreground">{role.description}</p>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-      </CardContent>
-    </Card>
+
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {role.benefits.map((benefit, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-primary mt-0.5">•</span>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+
+              {role.note && (
+                <div className="rounded-2xl bg-secondary/50 border border-border/50 p-4">
+                  <div className="flex items-center gap-2 font-medium">
+                    {role.note.icon && <role.note.icon className="size-4 text-accent" />}
+                    {role.note.title}
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground">{role.note.text}</p>
+                </div>
+              )}
+
+              {role.extras && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {role.extras.map((extra, i) => (
+                    <div key={i} className="rounded-2xl bg-secondary/50 border border-border/50 p-4">
+                      <div className="font-medium text-sm">{extra.title}</div>
+                      <div className="mt-1 text-sm text-muted-foreground">{extra.text}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Form Panel */}
+            <div className="rounded-2xl bg-secondary/30 border border-border/50 p-4 md:p-6">
+              <h4 className="mb-4 text-lg font-semibold font-heading">Register your interest</h4>
+              <InterestForm role={role.id} />
+            </div>
+          </div>
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 }

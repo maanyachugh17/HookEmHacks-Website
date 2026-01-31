@@ -88,7 +88,7 @@ export function InterestForm({ role = "participant" }) {
         <Button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-2xl px-6"
+          className="rounded-xl px-6 shadow-lg shadow-primary/20"
         >
           {status === "sending"
             ? "Sending..."

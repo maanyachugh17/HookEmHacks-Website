@@ -9,6 +9,7 @@ export default {
     extend: {
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        float: "float 6s ease-in-out infinite",
       },
       keyframes: {
         spotlight: {
@@ -19,6 +20,14 @@ export default {
           "100%": {
             opacity: "1",
             transform: "translate(-50%, -40%) scale(1)",
+          },
+        },
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-8px)",
           },
         },
       },

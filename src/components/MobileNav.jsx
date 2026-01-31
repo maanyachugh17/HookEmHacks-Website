@@ -20,21 +20,21 @@ export function MobileNav({ items, onNavigate }) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden">
+        <Button variant="ghost" size="icon" className="md:hidden rounded-xl">
           <Menu className="size-5" />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-72">
+      <SheetContent side="right" className="w-72 bg-background/95 backdrop-blur-xl border-border/50">
         <SheetHeader>
-          <SheetTitle>Navigation</SheetTitle>
+          <SheetTitle className="font-heading">Navigation</SheetTitle>
         </SheetHeader>
-        <nav className="mt-6 flex flex-col gap-1">
+        <nav className="mt-6 flex flex-col gap-2">
           {items.map((item) => (
             <Button
               key={item.id}
               variant="ghost"
-              className="justify-start"
+              className="justify-start rounded-xl h-12 text-base"
               onClick={() => handleNavigate(item.id)}
             >
               {item.label}

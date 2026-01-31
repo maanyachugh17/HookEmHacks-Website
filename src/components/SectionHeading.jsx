@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 export function SectionHeading({
@@ -21,13 +20,10 @@ export function SectionHeading({
     >
       {kicker &&
         (kickerStyle === "badge" ? (
-          <Badge
-            variant="secondary"
-            className="mb-3 gap-2 border-border bg-secondary text-secondary-foreground"
-          >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-4">
             {Icon && <Icon className="size-4" />}
-            <span className="font-medium">{kicker}</span>
-          </Badge>
+            <span>{kicker}</span>
+          </div>
         ) : (
           <span className="mb-2 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
             {kicker}
@@ -35,7 +31,7 @@ export function SectionHeading({
         ))}
       <h2
         className={cn(
-          "font-heading text-balance font-semibold tracking-tight",
+          "font-heading text-balance font-bold tracking-tight",
           compact ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
         )}
       >
