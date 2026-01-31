@@ -25,7 +25,7 @@ export function MobileNav({ items, onNavigate }) {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-72 bg-background/95 backdrop-blur-xl border-border/50">
+      <SheetContent side="right" className="w-72 glass-panel border-cyan-500/20">
         <SheetHeader>
           <SheetTitle className="font-heading">Navigation</SheetTitle>
         </SheetHeader>
@@ -34,7 +34,7 @@ export function MobileNav({ items, onNavigate }) {
             <Button
               key={item.id}
               variant="ghost"
-              className="justify-start rounded-xl h-12 text-base"
+              className="justify-start rounded-xl h-12 text-base text-foreground/80 hover:text-cyan-300 hover:bg-cyan-400/10"
               onClick={() => handleNavigate(item.id)}
             >
               {item.label}

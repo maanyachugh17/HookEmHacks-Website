@@ -74,12 +74,12 @@ const ROLES = [
 export function RegistrationHub({ defaultRole = "participant" }) {
   return (
     <Tabs defaultValue={defaultRole} className="w-full">
-      <TabsList className="mb-6 grid w-full grid-cols-2 md:grid-cols-4 bg-secondary/50 p-1 rounded-2xl">
+      <TabsList className="mb-6 grid w-full grid-cols-2 md:grid-cols-4 bg-cyan-400/10 p-1 rounded-2xl border border-cyan-400/20">
         {ROLES.map((role) => (
           <TabsTrigger
             key={role.id}
             value={role.id}
-            className="gap-2 rounded-xl data-[state=active]:bg-background data-[state=active]:shadow-sm"
+            className="gap-2 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-500/20 data-[state=active]:to-teal-500/20 data-[state=active]:text-cyan-300 data-[state=active]:shadow-sm text-foreground/70"
           >
             <role.icon className="size-4" />
             <span className="hidden sm:inline">{role.label}</span>
@@ -95,7 +95,7 @@ export function RegistrationHub({ defaultRole = "participant" }) {
             <div className="space-y-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <role.icon className="size-5 text-primary" />
+                  <role.icon className="size-5 text-cyan-400" />
                   <h3 className="text-xl font-semibold font-heading">{role.label}</h3>
                 </div>
                 <p className="mt-1 text-muted-foreground">{role.description}</p>
@@ -104,16 +104,16 @@ export function RegistrationHub({ defaultRole = "participant" }) {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {role.benefits.map((benefit, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <span className="text-primary mt-0.5">•</span>
+                    <span className="text-cyan-400 mt-0.5">•</span>
                     {benefit}
                   </li>
                 ))}
               </ul>
 
               {role.note && (
-                <div className="rounded-2xl bg-secondary/50 border border-border/50 p-4">
-                  <div className="flex items-center gap-2 font-medium">
-                    {role.note.icon && <role.note.icon className="size-4 text-accent" />}
+                <div className="rounded-2xl bg-purple-400/10 border border-purple-400/20 p-4">
+                  <div className="flex items-center gap-2 font-medium text-foreground">
+                    {role.note.icon && <role.note.icon className="size-4 text-purple-400" />}
                     {role.note.title}
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">{role.note.text}</p>
@@ -123,8 +123,8 @@ export function RegistrationHub({ defaultRole = "participant" }) {
               {role.extras && (
                 <div className="grid gap-3 sm:grid-cols-2">
                   {role.extras.map((extra, i) => (
-                    <div key={i} className="rounded-2xl bg-secondary/50 border border-border/50 p-4">
-                      <div className="font-medium text-sm">{extra.title}</div>
+                    <div key={i} className="rounded-2xl bg-cyan-400/10 border border-cyan-400/20 p-4">
+                      <div className="font-medium text-sm text-foreground">{extra.title}</div>
                       <div className="mt-1 text-sm text-muted-foreground">{extra.text}</div>
                     </div>
                   ))}
@@ -133,8 +133,8 @@ export function RegistrationHub({ defaultRole = "participant" }) {
             </div>
 
             {/* Form Panel */}
-            <div className="rounded-2xl bg-secondary/30 border border-border/50 p-4 md:p-6">
-              <h4 className="mb-4 text-lg font-semibold font-heading">Register your interest</h4>
+            <div className="rounded-2xl bg-cyan-400/5 border border-cyan-400/20 p-4 md:p-6">
+              <h4 className="mb-4 text-lg font-semibold font-heading text-foreground">Register your interest</h4>
               <InterestForm role={role.id} />
             </div>
           </div>

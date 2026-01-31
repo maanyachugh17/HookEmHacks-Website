@@ -88,7 +88,7 @@ export function InterestForm({ role = "participant" }) {
         <Button
           type="submit"
           disabled={status === "sending"}
-          className="rounded-xl px-6 shadow-lg shadow-primary/20"
+          className="rounded-xl px-6 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-white shadow-lg shadow-cyan-500/25"
         >
           {status === "sending"
             ? "Sending..."
@@ -100,7 +100,7 @@ export function InterestForm({ role = "participant" }) {
         </Button>
 
         <div className="text-sm text-muted-foreground">
-          Prefer email? <span className="text-foreground">hookemhacks@gmail.com</span>
+          Prefer email? <span className="text-cyan-300">hookemhacks@gmail.com</span>
         </div>
       </div>
 
