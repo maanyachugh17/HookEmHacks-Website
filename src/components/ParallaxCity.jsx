@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import citySkyline from "@/assets/city-skyline.jpg";
-import cityMidground from "@/assets/city-midground.jpg";
-import cityForeground from "@/assets/city-foreground.jpg";
 
 export function ParallaxCity() {
   const [scrollY, setScrollY] = useState(0);
@@ -16,110 +14,68 @@ export function ParallaxCity() {
   }, []);
 
   // Calculate fade based on scroll - fade out the city as user scrolls
-  const fadeOpacity = Math.max(0, 1 - scrollY / 800);
+  const fadeOpacity = Math.max(0, 1 - scrollY / 900);
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Gradient sky base */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(
-            to bottom,
-            var(--sky-top) 0%,
-            var(--sky-mid) 35%,
-            var(--sky-bottom) 65%,
-            var(--background) 100%
-          )`,
-        }}
-      />
-
-      {/* Far background - skyline (slowest) */}
+      {/* Main city skyline background - displayed prominently */}
       <div
         className="absolute inset-0 transition-opacity duration-300"
         style={{
           backgroundImage: `url(${citySkyline})`,
           backgroundSize: 'cover',
-          backgroundPosition: `center ${50 + scrollY * 0.02}%`,
+          backgroundPosition: `center ${50 + scrollY * 0.03}%`,
           backgroundRepeat: 'no-repeat',
-          transform: `translateY(${scrollY * 0.15}px)`,
-          opacity: fadeOpacity * 0.95,
+          transform: `translateY(${scrollY * 0.2}px) scale(${1 + scrollY * 0.0001})`,
+          opacity: fadeOpacity,
         }}
       />
 
-      {/* Mid layer - buildings (medium speed) */}
-      <div
-        className="absolute inset-0 transition-opacity duration-300"
-        style={{
-          backgroundImage: `url(${cityMidground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: `center ${60 + scrollY * 0.03}%`,
-          backgroundRepeat: 'no-repeat',
-          transform: `translateY(${scrollY * 0.25}px)`,
-          opacity: fadeOpacity * 0.85,
-          top: '15%',
-        }}
-      />
-
-      {/* Foreground layer - trees/houses (fastest) */}
-      <div
-        className="absolute inset-0 transition-opacity duration-300"
-        style={{
-          backgroundImage: `url(${cityForeground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: `center ${70 + scrollY * 0.04}%`,
-          backgroundRepeat: 'no-repeat',
-          transform: `translateY(${scrollY * 0.4}px)`,
-          opacity: fadeOpacity * 0.75,
-          top: '30%',
-        }}
-      />
-
-      {/* Animated floating elements */}
+      {/* Subtle animated clouds/atmosphere */}
       <div 
         className="absolute inset-0 overflow-hidden"
-        style={{ opacity: fadeOpacity }}
+        style={{ opacity: fadeOpacity * 0.4 }}
       >
         <div 
-          className="absolute w-64 h-32 rounded-full bg-foreground/5 blur-3xl"
+          className="absolute w-96 h-48 rounded-full bg-white/20 blur-3xl"
           style={{
-            top: '10%',
-            left: '10%',
-            transform: `translateY(${Math.sin(scrollY * 0.01) * 20}px)`,
+            top: '5%',
+            left: '5%',
+            transform: `translateX(${scrollY * 0.1}px) translateY(${Math.sin(scrollY * 0.005) * 10}px)`,
           }}
         />
         <div 
-          className="absolute w-48 h-24 rounded-full bg-foreground/5 blur-3xl"
+          className="absolute w-80 h-40 rounded-full bg-white/15 blur-3xl"
+          style={{
+            top: '8%',
+            right: '10%',
+            transform: `translateX(${-scrollY * 0.08}px) translateY(${Math.sin(scrollY * 0.005 + 1) * 8}px)`,
+          }}
+        />
+        <div 
+          className="absolute w-64 h-32 rounded-full bg-white/10 blur-3xl"
           style={{
             top: '15%',
-            right: '20%',
-            transform: `translateY(${Math.sin(scrollY * 0.01 + 1) * 15}px)`,
-          }}
-        />
-        <div 
-          className="absolute w-32 h-16 rounded-full bg-foreground/5 blur-3xl"
-          style={{
-            top: '25%',
-            left: '40%',
-            transform: `translateY(${Math.sin(scrollY * 0.01 + 2) * 10}px)`,
+            left: '35%',
+            transform: `translateX(${scrollY * 0.05}px) translateY(${Math.sin(scrollY * 0.005 + 2) * 6}px)`,
           }}
         />
       </div>
 
-      {/* Bottom gradient fade to content */}
+      {/* Bottom gradient fade to content background */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-80 pointer-events-none"
         style={{
-          background: `linear-gradient(to top, var(--background) 0%, var(--background) 20%, transparent 100%)`,
+          background: `linear-gradient(to top, var(--background) 0%, var(--background) 30%, transparent 100%)`,
         }}
       />
 
-      {/* Subtle vignette for depth */}
+      {/* Very subtle vignette for depth - not too dark */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at center top, transparent 30%, var(--background) 120%)`,
-          opacity: 0.5,
+          background: `radial-gradient(ellipse at center 30%, transparent 20%, var(--background) 150%)`,
+          opacity: 0.3,
         }}
       />
     </div>
